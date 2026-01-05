@@ -2,7 +2,6 @@ let currentColorIndex = 0;
 
 /**
  * Changes the background color of the page when the button is clicked
- * Returns a valid RGB color string
  */
 function changeBackgroundColor() {
     const color = colors[currentColorIndex];
