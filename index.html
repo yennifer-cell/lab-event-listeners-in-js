@@ -2,16 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lab: Event Listeners With JavaScript</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Dynamic UI with Event Listeners</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: white;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+    input {
+      margin-top: 10px;
+      padding: 5px;
+    }
+    p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Lab: Event Listeners With JavaScript</h1>
-  <button id="changeColorButton">Change Background Color</button>
-  <button id="resetColorButton">Reset Background Color</button>
-  <p id="keyPressDisplay">Press any key...</p>
-  <input type="text" id="textInput" placeholder="Type something...">
-  <p id="textInputDisplay">Your input will be displayed here.</p>
-  <script src="index.js"></script>
+
+  <h2>Interactive Web Page</h2>
+
+  <button id="colorBtn">Change Background</button>
+  <button id="resetBtn">Reset Background</button>
+
+  <br><br>
+
+  <input type="text" id="textInput" placeholder="Type something..." />
+
+  <p id="keyDisplay">Key pressed: None</p>
+  <p id="inputDisplay">User input: </p>
+  <p id="interactionDisplay">Interaction log:</p>
+
+  <script>
+    // Change background color on button click
+    function changeBackgroundColor() {
+      document.body.style.backgroundColor = "#cce7ff";
+      logInteraction("Background color changed");
+    }
+
+    // Reset background color on double-click
+    function resetBackgroundColor() {
+      document.body.style.backgroundColor = "white";
+      logInteraction("Background color reset");
+    }
+
+    // Display key pressed by the user
+    function displayKeyPress(event) {
+      document.getElementById("keyDisplay").textContent =
+        "Key pressed: " + event.key;
+      logInteraction("Key pressed: " + event.key);
+    }
+
+    // Display real-time user input
+    function displayUserInput() {
+      const inputValue = document.getElementById("textInput").value;
+      document.getElementById("inputDisplay").textContent =
+        "User input: " + inputValue;
+    }
+
+    // Integrated interaction logger
+    function logInteraction(message) {
+      document.getElementById("interactionDisplay").textContent =
+        "Interaction log: " + message;
+    }
+
+    // Event listeners
+    document.getElementById("colorBtn")
+      .addEventListener("click", changeBackgroundColor);
+
+    document.getElementById("resetBtn")
+      .addEventListener("dblclick", resetBackgroundColor);
+
+    document.addEventListener("keydown", displayKeyPress);
+
+    document.getElementById("textInput")
+      .addEventListener("input", displayUserInput);
+  </script>
+
 </body>
 </html>
