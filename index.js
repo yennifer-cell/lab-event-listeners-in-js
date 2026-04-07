@@ -1,5 +1,3 @@
-// index.js
-
 // Changes the background color to a random RGB color
 function changeBackgroundColor() {
   const r = Math.floor(Math.random() * 256)
